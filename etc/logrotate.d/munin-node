@@ -1,0 +1,10 @@
+/var/log/munin/munin-node.log {
+	daily
+	missingok
+	rotate 7
+	compress
+	copytruncate
+	ifempty
+	dateext
+	create 640 root root
+}
