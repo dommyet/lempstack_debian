@@ -1,0 +1,5 @@
+#!/bin/sh
+#
+# Generate GoAccess report page every hour
+
+cat /var/log/nginx/access.log | goaccess -a > /var/www/console/goaccess.html
