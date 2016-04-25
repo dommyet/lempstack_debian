@@ -1,0 +1,12 @@
+/var/log/php7.0-fpm.log {
+	monthly
+	missingok
+	rotate 12
+	dateext
+	compress
+	delaycompress
+	ifempty
+	postrotate
+		/usr/lib/php/php7.0-fpm-reopenlogs
+	endscript
+}
