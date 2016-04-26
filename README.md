@@ -24,6 +24,7 @@ apt-get dist-upgrade
 Most of the configurations could also run without problem on **Debian stable**. However some functions are unavailable because the specific version of software provided by **Debian stable** does not support them, for example, [**NGINX**](http://nginx.org/) provided in **Debian stable** does not support HTTP/2. Assume you are running **Debian stable** but you want to install [**NGINX**](http://nginx.org/) from **Debian testing** repository, you could do the following.
 
 ```
+echo 'deb http://mirrors.linode.com/debian/ testing main' >> /etc/apt/sources.list
 echo 'APT::Default-Release "jessie";' > /etc/apt/apt.conf.d/99defaultrelease
 apt-get update
 apt-get -t testing install nginx
