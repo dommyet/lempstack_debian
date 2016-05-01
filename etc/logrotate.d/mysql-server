@@ -1,12 +1,9 @@
-# - I put everything in one block and added sharedscripts, so that mysql gets 
-#   flush-logs'd only once.
-#   Else the binary logs would automatically increase by n times every day.
-# - The error log is obsolete, messages go to syslog now.
 /var/log/mysql.log /var/log/mysql/*log {
-	daily
-	rotate 7
+	monthly
+	rotate 12
 	missingok
 	dateext
+	dateformat -%Y-%m
 	ifempty
 	create 640 mysql adm
 	compress

@@ -1,8 +1,9 @@
 /var/log/fail2ban.log {
-	daily
+	monthly
 	missingok
-	rotate 7
+	rotate 12
 	dateext
+	dateformat -%Y-%m
 	compress
 	delaycompress
 	ifempty

@@ -3,6 +3,8 @@
 	rotate 7
 	daily
 	missingok
+	dateext
+	dateformat -%Y-%m-%d
 	ifempty
 	delaycompress
 	compress
@@ -28,6 +30,8 @@
 	rotate 4
 	weekly
 	missingok
+	dateext
+	dateformat -%Y-%m-%d
 	ifempty
 	compress
 	delaycompress
