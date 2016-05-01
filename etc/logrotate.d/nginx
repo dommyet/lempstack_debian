@@ -3,7 +3,7 @@
 	missingok
 	rotate 12
 	dateext
-	dateformat -%Y-%d
+	dateformat -%Y-%m
 	compress
 	delaycompress
 	ifempty
