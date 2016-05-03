@@ -35,5 +35,5 @@ apt-get -t testing install nginx
 To aviod [**Logjam attack**](https://weakdh.org/) you **SHOULD** run the following command to generate your own dhparam, the file provided is just an example and you **SHOULD NOT** use it. The generation process is going to take a long time (a few minutes).
 
 ```
-openssl dhparam -out /etc/ssl/private/dhparam.pem 4096
+openssl dhparam -out /etc/ssl/private/dhparam.pem 4096 && chmod 0640 /etc/ssl/private/dhparam.pem
 ```
