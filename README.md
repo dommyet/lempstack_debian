@@ -6,13 +6,11 @@ Both [php5](http://php.net/) and [php7](http://php.net/) are supported, there ar
 
 ## APT Repository Settings
 
-For a proper setup you need to configurate your package source.
-
 ### Debian testing ( Recommended )
 
 The provided configurations should be able to run smoothly on **Debian testing**, it is also the recommended version.
 
-And below is an example of  `/etc/apt/sources.list`, assuming you are a Linode user.
+Below is an example of  `/etc/apt/sources.list`, assuming you are a Linode user.
 
 ```
 deb http://mirrors.linode.com/debian/ testing main
@@ -29,7 +27,7 @@ However you should keep in mind that packages provided by **Debian stable** are 
 - **php7** is not provided
 - **nginx** comes without HTTP/2 support
 
-And below is an example of  `/etc/apt/sources.list`, assuming you are a Linode user.
+Below is an example of  `/etc/apt/sources.list`, assuming you are a Linode user.
 
 ```
 deb http://mirrors.linode.com/debian/ jessie main
