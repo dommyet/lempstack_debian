@@ -2,17 +2,32 @@
 
 The **lempstack** repository provides configuration files to allow administrators to easily set up a secure LEMP web server.
 
-Both [PHP5](http://php.net/) and [PHP7](http://php.net/) are supported, there are also configurations for [fail2ban](http://www.fail2ban.org/), [goaccess](https://goaccess.io/) and [munin](http://munin-monitoring.org/).
+Both [php5](http://php.net/) and [php7](http://php.net/) are supported, there are also configurations for [fail2ban](http://www.fail2ban.org/), [goaccess](https://goaccess.io/) and [munin](http://munin-monitoring.org/).
 
 ## APT Repository Settings
 
-These configurations should be able to run smoothly on current **Debian stable** with some newer packages installed from **Debian testing**.
+For a proper setup you need to configurate your package source.
 
-In order to set up two repositories properly and make the stable one as default, we could create a configuration file to set default release.
+### Debian testing ( Recommended )
+
+The provided configurations should be able to run smoothly on **Debian testing**, it is also the recommended version.
+
+And below is an example of  `/etc/apt/sources.list`, assuming you are a Linode user.
 
 ```
-echo 'APT::Default-Release "jessie";' > /etc/apt/apt.conf.d/99defaultrelease
+deb http://mirrors.linode.com/debian/ testing main
+deb http://mirrors.linode.com/debian/ testing-updates main
+deb http://mirrors.linode.com/debian-security/ testing/updates main
 ```
+
+### Debian stable
+
+You might encounter minor problems while running these configurations on current **Debian stable**, but generally it will work.
+
+However you should keep in mind that packages provided by **Debian stable** are relatively old.
+
+- **php7** is not provided
+- **nginx** comes without HTTP/2 support
 
 And below is an example of  `/etc/apt/sources.list`, assuming you are a Linode user.
 
@@ -20,19 +35,19 @@ And below is an example of  `/etc/apt/sources.list`, assuming you are a Linode u
 deb http://mirrors.linode.com/debian/ jessie main
 deb http://mirrors.linode.com/debian/ jessie-updates main
 deb http://mirrors.linode.com/debian-security/ jessie/updates main
-deb http://mirrors.linode.com/debian/ testing main
-deb http://mirrors.linode.com/debian/ testing-updates main
-deb http://mirrors.linode.com/debian-security/ testing/updates main
 ```
 
-Now you could install packages from **Debian stable** just like before, for example.
+### Debian stable plus testing
+
+Obtaining newer packages from **Debian testing** on **Debian stable** is one solution, generally it will work without problem.
+
+Put all six sources above into `/etc/apt/sources.list`, and tell the system to install packages from **Debian stable** as default.
 
 ```
-apt-get update
-apt-get install iptables-persistent
+echo 'APT::Default-Release "jessie";' > /etc/apt/apt.conf.d/99defaultrelease
 ```
 
-To install packages from **Debian testing**, for example the newer version of [**nginx**](http://nginx.org/) that supports HTTP/2, you could do the following.
+Now you could install packages from **Debian stable** just like normal, to install from **Debian testing**, use `-t` to specify the release you want.
 
 ```
 apt-get update
@@ -46,3 +61,9 @@ To aviod [**Logjam attack**](https://weakdh.org/) you **SHOULD** run the followi
 ```
 openssl dhparam -out /etc/ssl/private/dhparam.pem 4096 && chmod 0640 /etc/ssl/private/dhparam.pem
 ```
+
+## Performance and fine tune
+
+These configurations are designed to run on low performance servers, typically those with 1 vCPU and 1-2 GB of RAM.
+
+I put most of the important parameters in the beginning of each configuration files, and there are also useful comments. The administrator should look into these configurations and adjust them according to your situation.
