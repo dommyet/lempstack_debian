@@ -10,7 +10,7 @@ Both [php5](http://php.net/) and [php7](http://php.net/) are supported, there ar
 
 The provided configurations should be able to run smoothly on **Debian testing**, it is also the recommended version.
 
-Below is an example of  `/etc/apt/sources.list`, assuming your server is located in the US.
+Below is an example of  `/etc/apt/sources.list`, please refer to [Debian SourceList](https://wiki.debian.org/SourcesList/).
 
 ```
 deb http://deb.debian.org/debian testing main
