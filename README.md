@@ -10,12 +10,12 @@ Both [php5](http://php.net/) and [php7](http://php.net/) are supported, there ar
 
 The provided configurations should be able to run smoothly on **Debian testing**, it is also the recommended version.
 
-Below is an example of  `/etc/apt/sources.list`, assuming you are a Linode user.
+Below is an example of  `/etc/apt/sources.list`, assuming your server is located in the US.
 
 ```
-deb http://mirrors.linode.com/debian/ testing main
-deb http://mirrors.linode.com/debian/ testing-updates main
-deb http://mirrors.linode.com/debian-security/ testing/updates main
+deb http://deb.debian.org/debian testing main
+deb http://deb.debian.org/debian-security/ testing/updates main
+deb http://deb.debian.org/debian testing-updates main
 ```
 
 ### Debian stable
@@ -24,15 +24,12 @@ You might encounter minor problems while running these configurations on current
 
 However you should keep in mind that packages provided by **Debian stable** are relatively old.
 
-- **php7** is not provided
-- **nginx** comes without HTTP/2 support
-
-Below is an example of  `/etc/apt/sources.list`, assuming you are a Linode user.
+Below is an example of  `/etc/apt/sources.list`.
 
 ```
-deb http://mirrors.linode.com/debian/ jessie main
-deb http://mirrors.linode.com/debian/ jessie-updates main
-deb http://mirrors.linode.com/debian-security/ jessie/updates main
+deb http://deb.debian.org/debian stable main
+deb http://deb.debian.org/debian-security/ stable/updates main
+deb http://deb.debian.org/debian stable-updates main
 ```
 
 ### Debian stable plus testing
@@ -42,7 +39,7 @@ Obtaining newer packages from **Debian testing** on **Debian stable** is one sol
 Put all six sources above into `/etc/apt/sources.list`, and tell the system to install packages from **Debian stable** as default.
 
 ```
-echo 'APT::Default-Release "jessie";' > /etc/apt/apt.conf.d/99defaultrelease
+echo 'APT::Default-Release "stable";' > /etc/apt/apt.conf.d/99defaultrelease
 ```
 
 Now you could install packages from **Debian stable** just like normal, to install from **Debian testing**, use `-t` to specify the release you want.
