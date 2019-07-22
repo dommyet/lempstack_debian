@@ -1,14 +1,12 @@
-# LEMP stack configuration files
+# LEMP stack configuration files for Debian
 
-The **lempstack** repository provides configuration files to allow administrators to easily set up a secure LEMP web server.
+The **lempstack_debian** repository provides configuration files for setting up a secure LEMP web server on Debian.
 
 Both [php5](http://php.net/) and [php7](http://php.net/) are supported, there are also configurations for [fail2ban](http://www.fail2ban.org/), [goaccess](https://goaccess.io/) and [munin](http://munin-monitoring.org/).
 
 ## APT Repository Settings
 
 ### Debian testing ( Recommended )
-
-The provided configurations should be able to run smoothly on **Debian testing**, it is also the recommended version.
 
 Below is an example of  `/etc/apt/sources.list`, please refer to [Debian SourceList](https://wiki.debian.org/SourcesList/).
 
@@ -20,11 +18,9 @@ deb http://deb.debian.org/debian testing-updates main
 
 ### Debian stable
 
-You might encounter minor problems while running these configurations on current **Debian stable**, but generally it will work.
+Using these configurations on current **Debian stable** would generally work. However, minor issues might be expected.
 
-However you should keep in mind that packages provided by **Debian stable** are relatively old.
-
-Below is an example of  `/etc/apt/sources.list`.
+Below is an example of  `/etc/apt/sources.list`, please refer to [Debian SourceList](https://wiki.debian.org/SourcesList/).
 
 ```
 deb http://deb.debian.org/debian stable main
@@ -32,9 +28,9 @@ deb http://deb.debian.org/debian-security/ stable/updates main
 deb http://deb.debian.org/debian stable-updates main
 ```
 
-### Debian stable plus testing
+### Using Debian testing packages on Debian stable
 
-Obtaining newer packages from **Debian testing** on **Debian stable** is one solution, generally it will work without problem.
+Using new packages from **Debian testing** on **Debian stable** would generally work. However, minor issues might be expected.
 
 Put all six sources above into `/etc/apt/sources.list`, and tell the system to install packages from **Debian stable** as default.
 
@@ -42,23 +38,23 @@ Put all six sources above into `/etc/apt/sources.list`, and tell the system to i
 echo 'APT::Default-Release "stable";' > /etc/apt/apt.conf.d/99defaultrelease
 ```
 
-Now you could install packages from **Debian stable** just like normal, to install from **Debian testing**, use `-t` to specify the release you want.
+Now packages could be installed from **Debian stable** like normal. To install packages from **Debian testing**, use `-t` to specify the desired release.
 
 ```
-apt-get update
-apt-get -t testing install nginx
+sudo apt-get update
+sudo apt-get -t testing install nginx
 ```
 
 ## Logjam Attack
 
-To aviod [**Logjam attack**](https://weakdh.org/) you **SHOULD** run the following command to generate your own dhparam, the file provided is just an example and you **SHOULD NOT** use it. The generation process is going to take a long time (a few minutes).
+To aviod [**Logjam attack**](https://weakdh.org/) the following command **SHOULD** be executed to generate your own dhparam. The provided example **SHOULD NOT** be used.
+
+The generation process is going to take a long time (a few minutes).
 
 ```
-openssl dhparam -out /etc/ssl/private/dhparam.pem 4096 && chmod 0640 /etc/ssl/private/dhparam.pem
+sudo openssl dhparam -out /etc/ssl/private/dhparam.pem 4096 && sudo chmod 0640 /etc/ssl/private/dhparam.pem
 ```
 
 ## Performance and fine tune
 
-These configurations are designed to run on low performance servers, typically those with 1 vCPU and 1-2 GB of RAM.
-
-I put most of the important parameters in the beginning of each configuration files, and there are also useful comments. The administrator should look into these configurations and adjust them according to your situation.
+These configurations are designed to run on low performance servers, typically those with 1-2 vCPU(s) and 1-2 GB of RAM.
