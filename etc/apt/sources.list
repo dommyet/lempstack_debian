@@ -1,0 +1,2 @@
+deb http://deb.debian.org/debian testing main
+deb http://deb.debian.org/debian testing-updates main
