@@ -2,7 +2,7 @@
 
 The **lempstack_debian** repository provides configuration files for setting up a secure LEMP web server on Debian.
 
-Both [php5](http://php.net/) and [php7](http://php.net/) are supported, there are also configurations for [fail2ban](http://www.fail2ban.org/), [goaccess](https://goaccess.io/) and [munin](http://munin-monitoring.org/).
+Both [php5](http://php.net/) and [php7.3](http://php.net/) are supported, there are also configurations for [fail2ban](http://www.fail2ban.org/), [goaccess](https://goaccess.io/) and [munin](http://munin-monitoring.org/).
 
 ## APT Repository Settings
 
@@ -12,7 +12,6 @@ Below is an example of  `/etc/apt/sources.list`, please refer to [Debian SourceL
 
 ```
 deb http://deb.debian.org/debian testing main
-deb http://deb.debian.org/debian-security/ testing/updates main
 deb http://deb.debian.org/debian testing-updates main
 ```
 
